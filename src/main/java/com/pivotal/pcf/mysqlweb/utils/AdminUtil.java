@@ -16,12 +16,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
  */
 package com.pivotal.pcf.mysqlweb.utils;
+package mariadb;
 
 import com.pivotal.pcf.mysqlweb.beans.Login;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 
-import java.sql.Connection;
+import java.sql.*;
 
 public class AdminUtil
 {
@@ -33,7 +34,7 @@ public class AdminUtil
     {
         SingleConnectionDataSource ds = new SingleConnectionDataSource();
 
-        ds.setDriverClassName("com.mysql.jdbc.Driver");
+        ds.setDriverClassName("org.mariadb.jdbc.Driver");
         ds.setUrl(url);
 
         if (username != null)
@@ -75,7 +76,7 @@ public class AdminUtil
     {
         DataSource dataSource = new DataSource();
 
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
 
         dataSource.setUrl(login.getUrl());
         dataSource.setUsername(login.getUsername());
